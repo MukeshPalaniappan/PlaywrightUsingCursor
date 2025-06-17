@@ -1,0 +1,63 @@
+Test Case ID,Test Category,Test Case Description,Preconditions,Test Steps,Expected Result,Severity,Remarks
+TC_LOGIN_001,Login,Verify successful login with valid credentials,"1. User has valid credentials
+2. User is on the login page","1. Navigate to https://www.saucedemo.com/
+2. Enter username: standard_user
+3. Enter password: secret_sauce
+4. Click Login button","1. User should be successfully logged in
+2. Should be redirected to inventory page
+3. Should see 'Swag Labs' header",High,Happy Path
+TC_LOGIN_002,Login,Verify login with invalid username,"1. User has invalid username
+2. User is on the login page","1. Navigate to https://www.saucedemo.com/
+2. Enter username: invalid_user
+3. Enter password: secret_sauce
+4. Click Login button","1. Error message should be displayed
+2. User should remain on login page
+3. Should see 'Epic sadface: Username and password do not match'",High,Negative Test
+TC_LOGIN_003,Login,Verify login with invalid password,"1. User has valid username
+2. User has invalid password
+3. User is on the login page","1. Navigate to https://www.saucedemo.com/
+2. Enter username: standard_user
+3. Enter password: wrong_password
+4. Click Login button","1. Error message should be displayed
+2. User should remain on login page
+3. Should see 'Epic sadface: Username and password do not match'",High,Negative Test
+TC_LOGIN_004,Login,Verify login with empty credentials,"1. User is on the login page","1. Navigate to https://www.saucedemo.com/
+2. Leave username empty
+3. Leave password empty
+4. Click Login button","1. Error message should be displayed
+2. User should remain on login page
+3. Should see 'Epic sadface: Username is required'",High,Negative Test
+TC_LOGIN_005,Login,Verify login with locked out user,"1. User has locked out credentials
+2. User is on the login page","1. Navigate to https://www.saucedemo.com/
+2. Enter username: locked_out_user
+3. Enter password: secret_sauce
+4. Click Login button","1. Error message should be displayed
+2. User should remain on login page
+3. Should see 'Epic sadface: Sorry, this user has been locked out'",High,Negative Test
+TC_CART_001,Shopping Cart,Verify adding item to cart,"1. User is logged in
+2. User is on inventory page","1. Navigate to inventory page
+2. Click 'Add to cart' button for laptop bag
+3. Click shopping cart icon","1. Cart badge should show '1'
+2. Item should be visible in cart
+3. Item details should match selected product",High,Happy Path
+TC_CART_002,Shopping Cart,Verify checkout process,"1. User is logged in
+2. Item is in cart","1. Click 'Checkout' button
+2. Enter first name: John
+3. Enter last name: Doe
+4. Enter postal code: 12345
+5. Click 'Continue' button","1. Should proceed to checkout overview
+2. Should see item details
+3. Should see total amount",High,Happy Path
+TC_CART_003,Shopping Cart,Verify discount application,"1. User is logged in
+2. User is on checkout overview page","1. Enter discount code: DISCOUNT10
+2. Click 'Apply' button","1. Discount should be applied
+2. Total amount should be updated
+3. Should see discount amount",Medium,Happy Path
+TC_CART_004,Shopping Cart,Verify guest user restriction,"1. User is not logged in","1. Navigate to inventory page
+2. Try to add item to cart","1. Should be redirected to login page
+2. Should see error message about login requirement",High,Negative Test
+TC_CART_005,Shopping Cart,Verify complete purchase,"1. User is logged in
+2. User has completed checkout information
+3. Discount is applied","1. Click 'Finish' button","1. Should see 'THANK YOU FOR YOUR ORDER'
+2. Should see order confirmation
+3. Should be able to return to home page",High,Happy Path 

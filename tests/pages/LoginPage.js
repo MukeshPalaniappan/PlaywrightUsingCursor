@@ -1,15 +1,14 @@
 class LoginPage {
   constructor(page) {
     this.page = page;
-    this.usernameInput = '#username';
+    this.usernameInput = '#user-name';
     this.passwordInput = '#password';
-    this.loginButton = 'button[type="submit"]';
-    this.successMessage = '#flash';
-    this.forgotPasswordLink = 'a[href="/forgot_password"]';
+    this.loginButton = '#login-button';
+    this.errorMessage = '[data-test="error"]';
   }
 
-  async navigate() {
-    await this.page.goto('https://the-internet.herokuapp.com/login');
+  async navigateToLoginPage() {
+    await this.page.goto('https://www.saucedemo.com/');
   }
 
   async login(username, password) {
@@ -18,12 +17,12 @@ class LoginPage {
     await this.page.click(this.loginButton);
   }
 
-  async getSuccessMessage() {
-    return this.page.locator(this.successMessage);
+  async getErrorMessage() {
+    return await this.page.textContent(this.errorMessage);
   }
 
-  async clickForgotPassword() {
-    await this.page.click(this.forgotPasswordLink);
+  async isErrorMessageVisible() {
+    return await this.page.isVisible(this.errorMessage);
   }
 }
 

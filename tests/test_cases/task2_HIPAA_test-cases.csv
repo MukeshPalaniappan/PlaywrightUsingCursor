@@ -1,0 +1,13 @@
+Test Case ID,Test Category,Test Case Description,Preconditions,Test Steps,Expected Result,Priority,Severity,Remarks
+TC_HIPAA_01,Login/Session,Authenticated user can login and access messaging,User account exists,1. Navigate to login page\n2. Enter valid credentials\n3. Click login,User is logged in and can access messaging,High,Critical,Positive scenario
+TC_HIPAA_02,Login/Session,Unauthenticated user cannot access messaging,None,1. Navigate to messaging page without login,Redirected to login page,High,Critical,Negative scenario
+TC_HIPAA_03,Secure Transmission,Message is encrypted in transit,User is logged in,1. Send a message\n2. Monitor network traffic,Message payload is encrypted,High,Critical,Requires network analysis
+TC_HIPAA_04,Secure Storage,Message is encrypted at rest,User is logged in,1. Send a message\n2. Check message storage in DB,Message is stored encrypted,High,Critical,Requires DB access
+TC_HIPAA_05,PHI Redaction,PHI is not present in application/server logs,User sends message with PHI,1. Send message containing PHI\n2. Review logs,No PHI present in logs,High,Critical,Log review required
+TC_HIPAA_06,PHI Redaction,PHI is not present in browser cache,User sends message with PHI,1. Send message containing PHI\n2. Inspect browser cache,No PHI present in cache,Medium,High,Cache inspection required
+TC_HIPAA_07,Archival,User can archive a message,User is logged in,1. Select a message\n2. Click archive,Message is moved to archive,Medium,Medium,Positive scenario
+TC_HIPAA_08,Archival,User can delete a message,User is logged in,1. Select a message\n2. Click delete,Message is deleted,Medium,Medium,Positive scenario
+TC_HIPAA_09,Audit Trail,Admin can view audit trail by user/date/tag,Admin access,1. Login as admin\n2. Access audit trail\n3. Filter by user/date/tag,Audit trail displays correct filtered results,Medium,High,Positive scenario
+TC_HIPAA_10,Permissions,User without permission cannot access another user's messages,User is logged in,1. Attempt to access another user's messages,Access denied error,High,High,Negative scenario
+TC_HIPAA_11,Session,Session timeout after inactivity,User is logged in,1. Remain inactive for session timeout period,User is logged out automatically,Medium,Medium,Session management
+TC_HIPAA_12,Secure Transmission,Attempt to send message over insecure channel,User is logged in,1. Try to access messaging over HTTP,Access is blocked or redirected to HTTPS,High,Critical,Negative scenario 

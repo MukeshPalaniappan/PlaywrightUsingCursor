@@ -1,0 +1,36 @@
+Test Case ID,Test Case Description,Test Steps,Test Data,Expected Result,Priority
+TC_LOGIN_001,Verify successful login with valid credentials,"1. Navigate to https://www.saucedemo.com/
+2. Enter username
+3. Enter password
+4. Click Login button",Username: standard_user
+Password: secret_sauce,"1. User should be successfully logged in
+2. Should be redirected to inventory page
+3. Should see 'Swag Labs' header",High
+TC_LOGIN_002,Verify login with invalid username,"1. Navigate to https://www.saucedemo.com/
+2. Enter invalid username
+3. Enter valid password
+4. Click Login button",Username: invalid_user
+Password: secret_sauce,"1. Error message should be displayed
+2. User should remain on login page
+3. Should see 'Epic sadface: Username and password do not match'",High
+TC_LOGIN_003,Verify login with invalid password,"1. Navigate to https://www.saucedemo.com/
+2. Enter valid username
+3. Enter invalid password
+4. Click Login button",Username: standard_user
+Password: wrong_password,"1. Error message should be displayed
+2. User should remain on login page
+3. Should see 'Epic sadface: Username and password do not match'",High
+TC_LOGIN_004,Verify login with empty credentials,"1. Navigate to https://www.saucedemo.com/
+2. Leave username empty
+3. Leave password empty
+4. Click Login button",Username: (empty)
+Password: (empty),"1. Error message should be displayed
+2. User should remain on login page
+3. Should see 'Epic sadface: Username is required'",High
+TC_LOGIN_005,Verify login with locked out user,"1. Navigate to https://www.saucedemo.com/
+2. Enter locked out username
+3. Enter password
+4. Click Login button",Username: locked_out_user
+Password: secret_sauce,"1. Error message should be displayed
+2. User should remain on login page
+3. Should see 'Epic sadface: Sorry, this user has been locked out'",High 
