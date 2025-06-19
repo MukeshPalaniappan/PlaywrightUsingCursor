@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Install Playwright with dependencies
-         run: npx playwright install --with-deps
-         shell: bash
+        run: npx playwright install --with-deps
+        shell: bash
       - name: Run Playwright tests
         run: npx playwright test 
